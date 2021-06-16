@@ -11,9 +11,9 @@ djangorestframework = "*"
 pyjwt = "*"
 drf-yasg = "*"
 gunicorn = "*"
-psycopg2 = "==2.7.7"
+psycopg2 = "2.8.6"
 django-heroku = "*"
 django-cors-headers = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
