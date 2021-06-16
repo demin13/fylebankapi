@@ -12,6 +12,7 @@ pyjwt = "*"
 drf-yasg = "*"
 gunicorn = "*"
 psycopg2 = "2.8.6"
+django-filter = "*"
 django-heroku = "*"
 django-cors-headers = "*"
 
