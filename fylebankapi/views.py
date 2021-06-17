@@ -4,17 +4,19 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
 from rest_framework.filters import SearchFilter
-import django_filters
+from .pagination import pageForBranches
 
 class bankList(ListAPIView):
     queryset = bankmodel.objects.all()
     serializer_class = Serializationbanks
-    filter_backends = [django_filters.rest_framework.DjangoFilterBackend,SearchFilter]
-    filterset_fields = ['id']
+    #filter_backends = [django_filters.rest_framework.DjangoFilterBackend,SearchFilter]
+    filter_backends = [SearchFilter]
+    search_fields = ['^name']
 
 class branchList(ListAPIView):
     queryset = branchmodel.objects.all()
     serializer_class = Serializationbranches
+    pagination_class = pageForBranches
     filter_backends = [SearchFilter]#[django_filters.rest_framework.DjangoFilterBackend]
     #filterset_fields = ['branch']
     search_fields = ['^branch']
@@ -24,6 +26,7 @@ class branchList(ListAPIView):
 class branchList1(ListAPIView):
     queryset = branchmodel.objects.all()
     serializer_class = Serializationbranches
+    pagination_class = pageForBranches
     filter_backends = [SearchFilter]
     #filterset_fields = ['city']
     search_fields = ['ifsc','bank_id','branch','city','district','state']
