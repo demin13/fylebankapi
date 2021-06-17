@@ -26,7 +26,7 @@ class branchList1(ListAPIView):
     serializer_class = Serializationbranches
     filter_backends = [SearchFilter]
     #filterset_fields = ['city']
-    search_fields = ['^ifsc','^bank_id','^branch','^address','^city','district','state']
+    search_fields = ['ifsc','bank_id','branch','city','district','state']
     ordering = ['ifsc']
 
 
