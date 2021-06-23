@@ -1,10 +1,28 @@
+from django.shortcuts import render
 from fylebankapi.serialization import Serializationbanks,Serializationbranches
 from fylebankapi.models import bankmodel,branchmodel
 from rest_framework.response import Response
+from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
 from rest_framework.generics import ListAPIView
 from rest_framework.filters import SearchFilter
 from .pagination import pageForBranches
+
+@csrf_exempt
+def bankList1(request):
+    if request.method=='GET':
+        queryset = bankmodel.objects.all()
+        bank_serializer = Serializationbanks(queryset,many=True)
+        return JsonResponse(bank_serializer.data,safe=False)
+
+@csrf_exempt
+def branchLists(request):
+    if request.method=='GET':
+        queryset = branchmodel.objects.all()
+        branch_serializer = Serializationbranches(queryset,many=True)
+        return JsonResponse(branch_serializer.data,safe=False)
 
 class bankList(ListAPIView):
     queryset = bankmodel.objects.all()

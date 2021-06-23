@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from fylebankapi.models import bankmodel
-from fylebankapi.models import branchmodel
+from fylebankapi.models import bankmodel, branchmodel
 
 class Serializationbanks(serializers.ModelSerializer):
     class Meta:
